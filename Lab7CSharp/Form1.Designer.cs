@@ -3,8 +3,15 @@ namespace Lab7CSharp
 {
     partial class Form1
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -14,69 +21,86 @@ namespace Lab7CSharp
             base.Dispose(disposing);
         }
 
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBoxOutput = new System.Windows.Forms.RichTextBox();
-            this.textBoxInput = new System.Windows.Forms.TextBox();
-            this.buttonShuffle = new System.Windows.Forms.Button();
-            this.buttonReplace = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.btnLoadImage = new System.Windows.Forms.Button();
+            this.btnSaveImage = new System.Windows.Forms.Button();
+            this.btnConvertToMonochrome = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
-
             // 
-            // richTextBoxOutput
+            // pictureBox
             // 
-            this.richTextBoxOutput.Location = new System.Drawing.Point(12, 12);
-            this.richTextBoxOutput.Name = "richTextBoxOutput";
-            this.richTextBoxOutput.Size = new System.Drawing.Size(260, 100);
-            this.richTextBoxOutput.TabIndex = 0;
-            this.richTextBoxOutput.Text = "";
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(400, 300);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
             // 
-            // textBoxInput
+            // btnLoadImage
             // 
-            this.textBoxInput.Location = new System.Drawing.Point(12, 118);
-            this.textBoxInput.Name = "textBoxInput";
-            this.textBoxInput.Size = new System.Drawing.Size(260, 20);
-            this.textBoxInput.TabIndex = 1;
+            this.btnLoadImage.Location = new System.Drawing.Point(12, 325);
+            this.btnLoadImage.Name = "btnLoadImage";
+            this.btnLoadImage.Size = new System.Drawing.Size(120, 30);
+            this.btnLoadImage.TabIndex = 1;
+            this.btnLoadImage.Text = "Load Image";
+            this.btnLoadImage.UseVisualStyleBackColor = true;
+            this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
             // 
-            // buttonShuffle
+            // btnSaveImage
             // 
-            this.buttonShuffle.Location = new System.Drawing.Point(12, 144);
-            this.buttonShuffle.Name = "buttonShuffle";
-            this.buttonShuffle.Size = new System.Drawing.Size(126, 23);
-            this.buttonShuffle.TabIndex = 2;
-            this.buttonShuffle.Text = "Перемішати";
-            this.buttonShuffle.UseVisualStyleBackColor = true;
-            this.buttonShuffle.Click += new System.EventHandler(this.buttonShuffle_Click);
+            this.btnSaveImage.Location = new System.Drawing.Point(142, 325);
+            this.btnSaveImage.Name = "btnSaveImage";
+            this.btnSaveImage.Size = new System.Drawing.Size(120, 30);
+            this.btnSaveImage.TabIndex = 2;
+            this.btnSaveImage.Text = "Save Image";
+            this.btnSaveImage.UseVisualStyleBackColor = true;
+            this.btnSaveImage.Click += new System.EventHandler(this.btnSaveImage_Click);
             // 
-            // buttonReplace
+            // btnConvertToMonochrome
             // 
-            this.buttonReplace.Location = new System.Drawing.Point(146, 144);
-            this.buttonReplace.Name = "buttonReplace";
-            this.buttonReplace.Size = new System.Drawing.Size(126, 23);
-            this.buttonReplace.TabIndex = 3;
-            this.buttonReplace.Text = "Замінити";
-            this.buttonReplace.UseVisualStyleBackColor = true;
-            this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
+            this.btnConvertToMonochrome.Location = new System.Drawing.Point(272, 325);
+            this.btnConvertToMonochrome.Name = "btnConvertToMonochrome";
+            this.btnConvertToMonochrome.Size = new System.Drawing.Size(140, 30);
+            this.btnConvertToMonochrome.TabIndex = 3;
+            this.btnConvertToMonochrome.Text = "Convert to Monochrome";
+            this.btnConvertToMonochrome.UseVisualStyleBackColor = true;
+            this.btnConvertToMonochrome.Click += new System.EventHandler(this.btnConvertToMonochrome_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 179);
-            this.Controls.Add(this.buttonReplace);
-            this.Controls.Add(this.buttonShuffle);
-            this.Controls.Add(this.textBoxInput);
-            this.Controls.Add(this.richTextBoxOutput);
+            this.ClientSize = new System.Drawing.Size(424, 371);
+            this.Controls.Add(this.btnConvertToMonochrome);
+            this.Controls.Add(this.btnSaveImage);
+            this.Controls.Add(this.btnLoadImage);
+            this.Controls.Add(this.pictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Image Converter";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
+
         }
 
-        private System.Windows.Forms.RichTextBox richTextBoxOutput;
-        private System.Windows.Forms.TextBox textBoxInput;
-        private System.Windows.Forms.Button buttonShuffle;
-        private System.Windows.Forms.Button buttonReplace;
+        #endregion
+
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Button btnLoadImage;
+        private System.Windows.Forms.Button btnSaveImage;
+        private System.Windows.Forms.Button btnConvertToMonochrome;
     }
 }
 
