@@ -3,15 +3,8 @@ namespace Lab7CSharp
 {
     partial class Form1
     {
-        /// <summary>
-        /// Обязательная переменная конструктора.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Освободить все используемые ресурсы.
-        /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,48 +14,69 @@ namespace Lab7CSharp
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
-
-        /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.richTextBoxOutput = new System.Windows.Forms.RichTextBox();
+            this.textBoxInput = new System.Windows.Forms.TextBox();
+            this.buttonShuffle = new System.Windows.Forms.Button();
+            this.buttonReplace = new System.Windows.Forms.Button();
             this.SuspendLayout();
+
             // 
-            // label1
+            // richTextBoxOutput
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.PaleGreen;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(376, -1);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Lab 7.   C# ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.richTextBoxOutput.Location = new System.Drawing.Point(12, 12);
+            this.richTextBoxOutput.Name = "richTextBoxOutput";
+            this.richTextBoxOutput.Size = new System.Drawing.Size(260, 100);
+            this.richTextBoxOutput.TabIndex = 0;
+            this.richTextBoxOutput.Text = "";
+            // 
+            // textBoxInput
+            // 
+            this.textBoxInput.Location = new System.Drawing.Point(12, 118);
+            this.textBoxInput.Name = "textBoxInput";
+            this.textBoxInput.Size = new System.Drawing.Size(260, 20);
+            this.textBoxInput.TabIndex = 1;
+            // 
+            // buttonShuffle
+            // 
+            this.buttonShuffle.Location = new System.Drawing.Point(12, 144);
+            this.buttonShuffle.Name = "buttonShuffle";
+            this.buttonShuffle.Size = new System.Drawing.Size(126, 23);
+            this.buttonShuffle.TabIndex = 2;
+            this.buttonShuffle.Text = "Перемішати";
+            this.buttonShuffle.UseVisualStyleBackColor = true;
+            this.buttonShuffle.Click += new System.EventHandler(this.buttonShuffle_Click);
+            // 
+            // buttonReplace
+            // 
+            this.buttonReplace.Location = new System.Drawing.Point(146, 144);
+            this.buttonReplace.Name = "buttonReplace";
+            this.buttonReplace.Size = new System.Drawing.Size(126, 23);
+            this.buttonReplace.TabIndex = 3;
+            this.buttonReplace.Text = "Замінити";
+            this.buttonReplace.UseVisualStyleBackColor = true;
+            this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 386);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClientSize = new System.Drawing.Size(284, 179);
+            this.Controls.Add(this.buttonReplace);
+            this.Controls.Add(this.buttonShuffle);
+            this.Controls.Add(this.textBoxInput);
+            this.Controls.Add(this.richTextBoxOutput);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
-        #endregion
-
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox richTextBoxOutput;
+        private System.Windows.Forms.TextBox textBoxInput;
+        private System.Windows.Forms.Button buttonShuffle;
+        private System.Windows.Forms.Button buttonReplace;
     }
 }
 
