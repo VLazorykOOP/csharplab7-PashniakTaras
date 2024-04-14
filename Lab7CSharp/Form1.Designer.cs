@@ -1,7 +1,7 @@
 ﻿
 namespace Lab7CSharp
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,66 +30,41 @@ namespace Lab7CSharp
         private void InitializeComponent()
         {
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.btnLoadImage = new System.Windows.Forms.Button();
-            this.btnSaveImage = new System.Windows.Forms.Button();
-            this.btnConvertToMonochrome = new System.Windows.Forms.Button();
+            this.drawRandomShapesButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
             // 
-            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox.Location = new System.Drawing.Point(231, 8);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(400, 300);
+            this.pictureBox.Size = new System.Drawing.Size(655, 381);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabIndex = 7;
             this.pictureBox.TabStop = false;
             // 
-            // btnLoadImage
+            // drawRandomShapesButton
             // 
-            this.btnLoadImage.Location = new System.Drawing.Point(12, 325);
-            this.btnLoadImage.Name = "btnLoadImage";
-            this.btnLoadImage.Size = new System.Drawing.Size(120, 30);
-            this.btnLoadImage.TabIndex = 1;
-            this.btnLoadImage.Text = "Load Image";
-            this.btnLoadImage.UseVisualStyleBackColor = true;
-            this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
+            this.drawRandomShapesButton.Location = new System.Drawing.Point(9, 16);
+            this.drawRandomShapesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.drawRandomShapesButton.Name = "drawRandomShapesButton";
+            this.drawRandomShapesButton.Size = new System.Drawing.Size(206, 52);
+            this.drawRandomShapesButton.TabIndex = 8;
+            this.drawRandomShapesButton.Text = "Draw Random Shapes";
+            this.drawRandomShapesButton.UseVisualStyleBackColor = true;
+            this.drawRandomShapesButton.Click += new System.EventHandler(this.drawRandomShapesButton_Click);
             // 
-            // btnSaveImage
+            // MainForm
             // 
-            this.btnSaveImage.Location = new System.Drawing.Point(142, 325);
-            this.btnSaveImage.Name = "btnSaveImage";
-            this.btnSaveImage.Size = new System.Drawing.Size(120, 30);
-            this.btnSaveImage.TabIndex = 2;
-            this.btnSaveImage.Text = "Save Image";
-            this.btnSaveImage.UseVisualStyleBackColor = true;
-            this.btnSaveImage.Click += new System.EventHandler(this.btnSaveImage_Click);
-            // 
-            // btnConvertToMonochrome
-            // 
-            this.btnConvertToMonochrome.Location = new System.Drawing.Point(272, 325);
-            this.btnConvertToMonochrome.Name = "btnConvertToMonochrome";
-            this.btnConvertToMonochrome.Size = new System.Drawing.Size(140, 30);
-            this.btnConvertToMonochrome.TabIndex = 3;
-            this.btnConvertToMonochrome.Text = "Convert to Monochrome";
-            this.btnConvertToMonochrome.UseVisualStyleBackColor = true;
-            this.btnConvertToMonochrome.Click += new System.EventHandler(this.btnConvertToMonochrome_Click);
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 371);
-            this.Controls.Add(this.btnConvertToMonochrome);
-            this.Controls.Add(this.btnSaveImage);
-            this.Controls.Add(this.btnLoadImage);
+            this.ClientSize = new System.Drawing.Size(1062, 442);
+            this.Controls.Add(this.drawRandomShapesButton);
             this.Controls.Add(this.pictureBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Converter";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "MainForm";
+            this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -97,10 +72,15 @@ namespace Lab7CSharp
 
         #endregion
 
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Button openFileDialogButton;
+        private System.Windows.Forms.Button saveFileDialogButton;
+        private System.Windows.Forms.Button convertToGrayScaleButton;
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button btnLoadImage;
-        private System.Windows.Forms.Button btnSaveImage;
-        private System.Windows.Forms.Button btnConvertToMonochrome;
+        private System.Windows.Forms.Button drawRandomShapesButton;
     }
 }
 

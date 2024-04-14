@@ -8,92 +8,126 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Lab7CSharp
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        private Random random = new Random();
+
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void btnLoadImage_Click(object sender, EventArgs e)
+        private void drawRandomShapesButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.bmp)|*.jpg; *.jpeg; *.png; *.bmp";
+            Graphics graphics = pictureBox.CreateGraphics();
+            graphics.Clear(Color.White);
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            Shape[] shapes = GenerateRandomShapes();
+
+            foreach (Shape shape in shapes)
             {
-                pictureBox.Image = Image.FromFile(openFileDialog.FileName);
+                shape.Draw(graphics);
             }
         }
 
-        private void btnSaveImage_Click(object sender, EventArgs e)
+        private Shape[] GenerateRandomShapes()
         {
-            if (pictureBox.Image != null)
-            {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "PNG Image|*.png|Bitmap Image|*.bmp|JPEG Image|*.jpg|GIF Image|*.gif";
-                saveFileDialog.Title = "Save an Image File";
+            Shape[] shapes = new Shape[4];
+            shapes[0] = new Triangle(random);
+            shapes[1] = new Rectangle(random);
+            shapes[2] = new Ellipse(random);
+            shapes[3] = new Star(random);
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string extension = System.IO.Path.GetExtension(saveFileDialog.FileName);
-
-                    if (extension != null)
-                    {
-                        ImageFormat format;
-                        switch (extension.ToLower())
-                        {
-                            case ".jpg":
-                            case ".jpeg":
-                                format = ImageFormat.Jpeg;
-                                break;
-                            case ".bmp":
-                                format = ImageFormat.Bmp;
-                                break;
-                            case ".gif":
-                                format = ImageFormat.Gif;
-                                break;
-                            default:
-                                format = ImageFormat.Png;
-                                break;
-                        }
-                        pictureBox.Image.Save(saveFileDialog.FileName, format);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("No image to save.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnConvertToMonochrome_Click(object sender, EventArgs e)
-        {
-            if (pictureBox.Image != null)
-            {
-                Bitmap originalImage = new Bitmap(pictureBox.Image);
-                Bitmap monochromeImage = new Bitmap(originalImage.Width, originalImage.Height);
-
-                for (int x = 0; x < originalImage.Width; x++)
-                {
-                    for (int y = 0; y < originalImage.Height; y++)
-                    {
-                        Color pixelColor = originalImage.GetPixel(x, y);
-                        int averageColor = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
-                        Color newColor = Color.FromArgb(averageColor, averageColor, averageColor);
-                        monochromeImage.SetPixel(x, y, newColor);
-                    }
-                }
-
-                pictureBox.Image = monochromeImage;
-            }
-            else
-            {
-                MessageBox.Show("No image to convert.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return shapes;  
         }
     }
+
+    abstract class Shape
+    {
+        protected int x, y;
+        protected int size;
+        protected Color color;
+        protected Random random;
+
+        public Shape(Random random)
+        {
+            this.random = random;
+            x = random.Next(10, 200); // Випадкові координати в межах PictureBox
+            y = random.Next(10, 200);
+            size = random.Next(20, 50); // Випадковий розмір
+            color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256)); // Випадковий колір
+        }
+
+        public abstract void Draw(Graphics g);
+    }
+
+    class Rectangle : Shape
+    {
+        public Rectangle(Random random) : base(random) { }
+
+        public override void Draw(Graphics g)
+        {
+            SolidBrush brush = new SolidBrush(color);
+            g.FillRectangle(brush, x, y, size * 2, size);
+        }
+    }
+
+    class Ellipse : Shape
+    {
+        public Ellipse(Random random) : base(random) { }
+
+        public override void Draw(Graphics g)
+        {
+            SolidBrush brush = new SolidBrush(color);
+            g.FillEllipse(brush, x, y, size, size);
+        }
+    }
+
+    class Star : Shape
+    {
+        public Star(Random random) : base(random) { }
+
+        public override void Draw(Graphics g)
+        {
+            // Визначення вершин зірки
+            PointF[] points = new PointF[10];
+            double angle = Math.PI / 5; // 36 градусів в радіанах
+
+            for (int i = 0; i < 10; i++)
+            {
+                double r = (i % 2 == 0) ? size : size / 2; // Довжина радіуса
+                points[i] = new PointF((float)(x + r * Math.Cos(i * 2 * angle - Math.PI / 2)),
+                                       (float)(y + r * Math.Sin(i * 2 * angle - Math.PI / 2)));
+            }
+
+            // Малювання зафарбованої зірки
+            SolidBrush brush = new SolidBrush(color);
+            g.FillPolygon(brush, points);
+        }
+    }
+
+    class Triangle : Shape
+    {
+        public Triangle(Random random) : base(random) { }
+
+        public override void Draw(Graphics g)
+        {
+            // Визначення вершин трикутника
+            PointF[] points =
+            {
+            new PointF(x + size / 2, y), // Верхня вершина
+            new PointF(x, y + size),     // Ліва нижня вершина
+            new PointF(x + size, y + size) // Права нижня вершина
+        };
+
+            // Малювання зафарбованого трикутника
+            SolidBrush brush = new SolidBrush(color);
+            g.FillPolygon(brush, points);
+        }
+    }
+
 }
